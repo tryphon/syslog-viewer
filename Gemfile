@@ -11,4 +11,9 @@ group :development do
   gem 'simplecov'
   gem 'rb-inotify', '~> 0.9'
   gem 'libnotify'
+  gem 'capistrano'
+end
+
+group :production do
+  gem 'SyslogLogger'
 end

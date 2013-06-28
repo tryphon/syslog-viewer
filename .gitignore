@@ -1,5 +1,4 @@
 *~
 tmp/*
 coverage/*
-log-viewer.log
-logaccess.log
+log/*
