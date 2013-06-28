@@ -1,13 +1,25 @@
 require 'logger'
 require 'digest'
+require 'singleton'
 
 require 'log_access/log_part'
 
 module LogAccess
   class Application
+    include Singleton
 
+    def config_file
+      @config_file ||= File.expand_path("../../config/config.rb", __FILE__)
+    end
+
+    def setup
+      require config_file if File.exists? config_file
+      self
+    end
+
+    attr_accessor :logger
     def logger
-      @logger ||= Logger.new "logaccess.log"
+      @logger ||= Logger.new $stdout
     end
 
     def default_seek
@@ -16,8 +28,6 @@ module LogAccess
 
     def call(env)
       req = Rack::Request.new(env)
-
-      logger.debug req.inspect
 
       log_part = LogPart.new
       log_part.filter = req.params["filter"]
