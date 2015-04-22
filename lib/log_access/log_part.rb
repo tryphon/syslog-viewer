@@ -48,7 +48,7 @@ module LogAccess
     end
 
     def load
-      File.open(file, "r") do |f|
+      File.open(file, 'r:UTF-8') do |f|
         self.first_line = f.gets
 
         seek_file f
