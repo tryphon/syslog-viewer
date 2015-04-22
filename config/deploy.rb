@@ -1,8 +1,8 @@
 set :application, "log-access"
 set :repository,  "git://projects.tryphon.priv/log-access"
 
-server "sandbox", :app, :web, :db, :primary => true
-#server "monitor.tryphon.priv", :app, :web, :db, :primary => true
+#server "sandbox", :app, :web, :db, :primary => true
+server "monitor1.tryphon.priv", :app, :web, :db, :primary => true
 
 set :deploy_to, "/var/www/log-access"
 
